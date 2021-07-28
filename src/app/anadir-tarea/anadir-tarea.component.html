@@ -1,0 +1,24 @@
+<div class="container">
+  <h1>Añade tareas</h1>
+  <form (ngSubmit)="anadirTarea()">
+    <div style="display: flex">
+      <input
+        style="width: 500px"
+        name="busca"
+        [(ngModel)]="busca"
+        type="text"
+        class="form-control"
+        placeholder="¿Qué tienes pendiente?"
+        #txtAnadirTarea
+      />
+      <button
+        type="submit"
+        (click)="anadirTarea()"
+        class="btn btn-dark"
+        style="margin-left: 5px"
+      >
+        +
+      </button>
+    </div>
+  </form>
+</div>

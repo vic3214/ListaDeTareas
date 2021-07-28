@@ -1,0 +1,49 @@
+<div class="container">
+  <h2>Tareas por hacer:</h2>
+  <ul *ngIf="tareas.length > 0; else elseBlock" class="list-group">
+    <div>
+      <li
+        *ngFor="let tarea of tareas; let i = index"
+        class="list-group-item list-group-item-primary"
+        style="width: fit-content"
+      >
+        {{ i }} - {{ tarea }}
+
+        <button (click)="editaTarea(i)" type="button" class="btn btn-dark">
+          Editar tarea
+        </button>
+        <button (click)="borraTarea(i)" type="button" class="btn btn-dark">
+          Eliminar tarea
+        </button>
+        <div class="row" *ngIf="editTarea && i === index">
+          <input
+            type="text"
+            class="form-control"
+            width="500px"
+            style="margin-top: 10px; width: 300px"
+            name="nuevaTarea"
+            [(ngModel)]="nuevaTarea"
+          />
+          <button
+            (click)="guardaTarea(i)"
+            type="button"
+            class="btn btn-dark"
+            style="
+              margin-top: 10px;
+              margin-left: 10px;
+              width: 150px;
+              height: 37px;
+            "
+          >
+            Guardar tarea
+          </button>
+        </div>
+      </li>
+    </div>
+  </ul>
+  <ng-template #elseBlock
+    ><h3 style="margin-left: 20px; margin-top: 20px">
+      {{ textNoTareas }}
+    </h3></ng-template
+  >
+</div>
